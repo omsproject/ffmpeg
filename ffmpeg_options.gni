@@ -7,10 +7,17 @@ import("//build/config/chrome_build.gni")
 import("//build/config/chromecast_build.gni")
 import("//build/config/sanitizers/sanitizers.gni")
 
+import("//oms/build/config/features.gni")
+
 if (is_chrome_branded) {
   _default_ffmpeg_branding = "Chrome"
 } else {
   _default_ffmpeg_branding = "Chromium"
+
+  # oms project
+  if (oms_enabled) {
+    _default_ffmpeg_branding = "Chrome"
+  }
 }
 
 if (is_chromeos && is_chrome_branded) {
